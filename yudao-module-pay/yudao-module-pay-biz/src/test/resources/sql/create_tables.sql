@@ -1,7 +1,7 @@
 -- 支付應用表
 CREATE TABLE IF NOT EXISTS pay_app
-(
-    id
+    (
+        id
     BIGINT
     NOT
     NULL
