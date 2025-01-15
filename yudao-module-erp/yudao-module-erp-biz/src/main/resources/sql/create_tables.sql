@@ -27,8 +27,9 @@ CREATE TABLE IF NOT EXISTS erp_product_unit (
     updater     VARCHAR(64)  NOT NULL DEFAULT '' COMMENT '更新者',
     update_time DATETIME    NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新時間',
     deleted     BOOLEAN     NOT NULL DEFAULT FALSE COMMENT '是否刪除',
+    tenant_id        BIGINT       NOT NULL DEFAULT 0 COMMENT '租戶編號',
     UNIQUE KEY uk_name (name, deleted),
-    KEY idx_status (status, deleted)
+    KEY idx_status (status, tenant_id, deleted)
 ) ENGINE = InnoDB COMMENT '產品單位';
 
 -- 產品分類表 (需要 tenant_id - 不同租戶有不同分類體系)
